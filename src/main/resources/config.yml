@@ -1,0 +1,235 @@
+# ==========================================
+#       Gala-IA-LORE Configuration
+# ==========================================
+
+# ── IA (Ollama) Settings ──────────────────────────────────────────────────
+ollama:
+  url: "http://127.0.0.1:11434/api/chat"
+  model: "llama3.2"
+  temperature: 0.8
+  timeout_seconds: 30
+  max_retries: 3
+
+# ── Relic Generation ──────────────────────────────────────────────────────
+generation:
+  # Ítems y Libros generados en cada lote (forcegen / auto)
+  books_per_batch: 5
+  items_per_batch: 5
+  # Intervalo para regenerar el pool si no ha habido actividad (días)
+  auto_generation_interval_days: 3
+  # Mínimo de ítems en el pool antes de forzar una generación automática
+  min_pool_size_trigger: 5
+
+# ── Loot System (Aparición en el mundo) ───────────────────────────────────
+loot:
+  # Probabilidad base de que un cofre contenga una reliquia (0.0 a 100.0)
+  global_spawn_chance: 20.0
+  # ¿Deben las reliquias aparecer solo en cofres con Loot Tables conocidas?
+  only_known_loot_tables: false
+
+# ── Economy Settings (Vault required) ────────────────────────────────────
+economy:
+  enabled: true
+  # Valor base garantizado según rareza
+  base_values:
+    COMUN: 500.0
+    RARO: 2000.0
+    EPICO: 7000.0
+    LEGENDARIO: 25000.0
+  # Multiplicador extra por cada nivel de encantamiento
+  enchantment_value_per_level: 500.0
+  # Variación aleatoria del precio final (0.1 = +/- 10%)
+  price_variation: 0.15
+
+# ── Visual & Formatting ──────────────────────────────────────────────────
+formatting:
+  # Nombre que reciben las reliquias antes de ser identificadas
+  unidentified_name: "&k??&6 Reliquia Desconocida &k??"
+  # Prefijo para los mensajes del plugin
+  prefix: "&6&lGalaLore &8» &f"
+  # Ajuste de texto
+  book_max_lines_per_page: 14
+  book_max_chars_per_line: 19
+  lore_max_chars_per_line: 40
+
+# ── Rarities & Tiers ─────────────────────────────────────────────────────
+# Probabilidad de que una reliquia generada sea de x rareza.
+# El color usa formato MiniMessage de Adventure (ej: <gold>, <red>, <#RRGGBB>)
+rarities:
+  COMUN:
+    chance: 50
+    display_name: "COMÚN"
+    color: "<gray>"
+  RARO:
+    chance: 30
+    display_name: "RARO"
+    color: "<blue>"
+  EPICO:
+    chance: 15
+    display_name: "ÉPICO"
+    color: "<purple>"
+  LEGENDARIO:
+    chance: 5
+    display_name: "LEGENDARIO"
+    color: "<gold>"
+
+# ── Material Pools ───────────────────────────────────────────────────────
+# Materiales que la IA puede usar como base para cada rareza.
+materials:
+  COMUN:
+    - WOODEN_SWORD
+    - STONE_SWORD
+    - WOODEN_AXE
+    - STONE_AXE
+    - LEATHER_HELMET
+    - LEATHER_CHESTPLATE
+    - LEATHER_LEGGINGS
+    - LEATHER_BOOTS
+    - BOW
+    - FISHING_ROD
+    - COMPASS
+    - CLOCK
+  RARO:
+    - IRON_SWORD
+    - IRON_AXE
+    - IRON_PICKAXE
+    - IRON_HELMET
+    - IRON_CHESTPLATE
+    - IRON_LEGGINGS
+    - IRON_BOOTS
+    - CROSSBOW
+    - SHIELD
+    - GOLDEN_APPLE
+    - SHEARS
+  EPICO:
+    - DIAMOND_SWORD
+    - DIAMOND_AXE
+    - DIAMOND_PICKAXE
+    - DIAMOND_HELMET
+    - DIAMOND_CHESTPLATE
+    - DIAMOND_LEGGINGS
+    - DIAMOND_BOOTS
+    - TRIDENT
+    - TOTEM_OF_UNDYING
+  LEGENDARIO:
+    - NETHERITE_SWORD
+    - NETHERITE_AXE
+    - NETHERITE_PICKAXE
+    - NETHERITE_CHESTPLATE
+    - NETHERITE_HELMET
+    - NETHERITE_LEGGINGS
+    - NETHERITE_BOOTS
+    - TRIDENT
+    - TOTEM_OF_UNDYING
+
+# ── Materiales de Identificación ──────────────────────────────────────────
+# Lista de materiales que la IA tiene permitido pedir para identificar ítems.
+# Esto evita que la IA invente objetos que no existen (ej: "Emerald Ingot").
+identification_materials:
+  COMUN:
+    - PAPER
+    - FEATHER
+    - STRING
+    - STICK
+    - COAL
+    - OAK_LOG
+  RARO:
+    - IRON_INGOT
+    - GOLD_INGOT
+    - LAPIS_LAZULI
+    - REDSTONE
+    - BOOK
+    - COPPER_INGOT
+  EPICO:
+    - DIAMOND
+    - EMERALD
+    - ENDER_PEARL
+    - BLAZE_ROD
+    - OBSIDIAN
+    - GHAST_TEAR
+  LEGENDARIO:
+    - NETHERITE_INGOT
+    - ANCIENT_DEBRIS
+    - NETHER_STAR
+    - DRAGON_BREATH
+    - ECHO_SHARD
+
+# ── IA Prompts ───────────────────────────────────────────────────────────
+prompts:
+  base_context: "Eres un historiador antiguo de un mundo de fantasia llamado VitalisNW. Tu lenguaje es epico y misterioso."
+  # Contextos específicos según el tipo de objeto
+  item_context: "Vas a dar nombre y lore a una reliquia antigua (arma, herramienta o armadura)."
+  book_context:
+    COMUN: "Este es un libro comun, quizas el diario de un granjero o una receta antigua."
+    RARO: "Este libro es raro, contiene cronicas de batallas olvidadas o secretos de gremios."
+    EPICO: "Un libro epico con conocimientos prohibidos, rituales antiguos o la vida de un heroe."
+    LEGENDARIO: "Un tomo legendario que contiene la verdad sobre la creacion de VitalisNW o el destino de los dioses."
+  
+  # Contextos narrativos según el tipo de cofre donde aparezca
+  structures:
+    default: "Una antigua leyenda del mundo."
+    mineshaft: "Un tesoro perdido en una mina abandonada."
+    stronghold: "Un artefacto guardado en la biblioteca de una fortaleza real."
+    desert_pyramid: "Una reliquia de un faraon olvidado, maldita por sus sacerdotes."
+    nether_fortress: "Un arma forjada en el corazon del Nether, imbuida de magia oscura."
+    end_city: "Un artefacto del reino del Fin, dejado por seres de otra dimension."
+
+# ── Enchantment Pools ─────────────────────────────────────────────────────
+# Define qué encantamientos puede usar la IA para cada tipo de objeto.
+# La IA usará esta lista para generar los ítems.
+enchantments:
+  ESPADAS:
+    - sharpness
+    - fire_aspect
+    - looting
+    - sweeping_edge
+    - unbreaking
+    - mending
+  HACHAS:
+    - sharpness
+    - efficiency
+    - fortune
+    - silk_touch
+    - unbreaking
+    - mending
+  PICOS_PALAS:
+    - efficiency
+    - fortune
+    - silk_touch
+    - unbreaking
+    - mending
+  ARCOS:
+    - power
+    - punch
+    - flame
+    - infinity
+    - unbreaking
+    - mending
+  BALLESTAS:
+    - quick_charge
+    - multishot
+    - piercing
+    - unbreaking
+    - mending
+  ARMADURAS:
+    - protection
+    - thorns
+    - unbreaking
+    - mending
+  CASCOS:
+    - respiration
+    - aqua_affinity
+  BOTAS:
+    - feather_falling
+    - soul_speed
+    - depth_strider
+    - frost_walker
+  OTROS:
+    - unbreaking
+    - mending
+
+# ── Ranking & Stats ──────────────────────────────────────────────────────
+stats:
+  ranking_size: 10
+  # ¿Guardar stats de jugadores que no están en el servidor?
+  keep_offline_data: true

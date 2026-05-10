@@ -1,0 +1,30 @@
+name: Gala-IA-LORE
+version: '${version}'
+main: com.vitalisnw.galalore.GalaIALore
+api-version: '1.21'
+depend: [Vault]
+authors: [AntiGravity]
+description: Generador de reliquias únicas por IA (Ollama) para servidores Paper.
+
+commands:
+  galalore:
+    description: Administración de Gala-IA-LORE.
+    permission: galalore.admin
+    aliases: [glore]
+  anticuario:
+    description: Abre el menú para vender reliquias identificadas.
+    permission: galalore.anticuario
+  identificar:
+    description: Abre el GUI para identificar una reliquia con los materiales requeridos.
+    permission: galalore.identificar
+
+permissions:
+  galalore.admin:
+    description: Permite administrar el plugin (forcegen, stats, give).
+    default: op
+  galalore.anticuario:
+    description: Permite abrir el menú del anticuario para vender reliquias.
+    default: true
+  galalore.identificar:
+    description: Permite usar el identificador de reliquias.
+    default: true

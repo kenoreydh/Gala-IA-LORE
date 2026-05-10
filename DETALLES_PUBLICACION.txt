@@ -1,0 +1,43 @@
+# =======================================
+# Gala-IA-LORE - Descripción y Funciones
+# =======================================
+
+DESCRIPCIÓN EXTENSA:
+-------------------
+Gala-IA-LORE es un plugin revolucionario que utiliza Inteligencia Artificial local (vía Ollama) para transformar objetos ordinarios en reliquias legendarias con historias únicas y nombres evocadores. Diseñado para servidores que buscan un nivel de inmersión RPG sin precedentes, este plugin elimina la repetitividad de los objetos genéricos.
+
+El flujo de trabajo es innovador: los jugadores encuentran "Reliquias No Identificadas" que deben ser llevadas a un sistema de identificación. Mediante el uso de materiales específicos (esmeraldas, libros, etc.), la IA procesa el objeto y genera dinámicamente un nombre y un lore extenso basado en su rareza y tipo. No hay dos objetos iguales, ya que cada generación es única.
+
+FUNCIONES EXTENSAS:
+------------------
+1. Generación Dinámica por IA:
+   - Integración con modelos de lenguaje locales (LLMs) para generar texto creativo.
+   - Lore contextual: La IA conoce el tipo de objeto (espada, casco, pico) y adapta la historia.
+
+2. Sistema de Identificación de Reliquias:
+   - Interfaz GUI dedicada para identificar objetos.
+   - Costes configurables: Requiere materiales específicos para desbloquear el poder de la IA.
+
+3. Rarezas y Estilos:
+   - Soporte para múltiples niveles de rareza (Común, Raro, Épico, Legendario).
+   - Cada rareza tiene "prompts" distintos para asegurar que los objetos legendarios tengan historias mucho más profundas y épicas.
+
+4. El Anticuario (Mercado de Reliquias):
+   - NPC/GUI especializado donde los jugadores pueden vender sus reliquias identificadas.
+   - Precios dinámicos basados en la rareza y el tipo de objeto, creando una economía basada en el descubrimiento.
+
+5. Estabilidad y Fallbacks:
+   - Si la IA local no responde o está saturada, el plugin cuenta con un sistema de respaldo que asigna nombres predefinidos pero elegantes, asegurando que la experiencia de juego no se interrumpa.
+
+6. Personalización Total:
+   - Configuración extensa de prompts para que la IA hable con el tono de tu servidor (medieval, fantasía oscura, steampunk, etc.).
+
+COMANDOS:
+- /galalore (aliases: /glore): Comandos administrativos (stats, give, reload).
+- /anticuario: Abre el menú de venta de reliquias.
+- /identificar: Abre el menú para identificar una reliquia en mano.
+
+PERMISOS:
+- galalore.admin: Control total del plugin.
+- galalore.anticuario: Permiso para vender al anticuario.
+- galalore.identificar: Permiso para usar el sistema de identificación.
